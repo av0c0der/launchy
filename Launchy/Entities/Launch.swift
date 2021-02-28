@@ -11,7 +11,11 @@ import Foundation
 /**
  Detailed information about SpaceX rocket launch.
  */
-struct Launch: Decodable {
+struct Launch: Decodable, Equatable {
+
+    static func == (lhs: Launch, rhs: Launch) -> Bool {
+        lhs.id == rhs.id
+    }
 
     /// Links to related articles, videos, images and other materials on the internet.
     struct LaunchLinks: Decodable {
@@ -79,5 +83,7 @@ extension Launch {
 
     /// Image of the launch.
     var largeImageURL: URL? { links.flickr.original.first }
+
+    var largeImageURLs: [URL] { links.flickr.original }
 
 }
