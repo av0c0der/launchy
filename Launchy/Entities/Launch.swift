@@ -32,11 +32,16 @@ struct Launch: Decodable {
         let wikipedia: URL?
     }
 
+    enum DatePrecision: String, Decodable {
+        case half, quarter, year, month, day, hour
+    }
+
     enum CodingKeys: String, CodingKey {
         case id, name, rocket, upcoming, details, links
 
         case number = "flight_number"
         case launchDate = "date_unix"
+        case datePrecision = "date_precision"
     }
 
     /// Unique identifier of the launch.
@@ -58,6 +63,9 @@ struct Launch: Decodable {
 
     /// Launch date in UTC.
     let launchDate: Date
+
+    /// A launch scheduled for 2022 July would be represented as 2022-07-01T00:00:00.000Z. In this case, current field would be set as `month`, meaning the date is only valid to the month level, or 2022-07
+    let datePrecision: DatePrecision
 
     /// Is this an upcoming launch or not.
     let upcoming: Bool
