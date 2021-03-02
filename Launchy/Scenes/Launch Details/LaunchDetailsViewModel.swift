@@ -18,7 +18,6 @@ final class LaunchDetailsViewModel: Stepper {
         case imagesCarousel(ImagesCarouselCellViewModel)
         case text(TextCellViewModel)
         case details(LaunchListItemViewModel)
-        case rocket(Rocket)
         case loading
         case button(ButtonCellViewModel)
     }

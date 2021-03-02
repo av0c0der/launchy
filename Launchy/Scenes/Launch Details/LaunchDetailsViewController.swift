@@ -40,11 +40,6 @@ final class LaunchDetailsViewController: UIViewController {
             cell.startAnimating()
             return cell
 
-        case .rocket(let vm):
-            let cell = collectionView.dequeue(RocketDetailsCell.self, indexPath: indexPath)
-            cell.configure(with: vm)
-            return cell
-
         case .button(let vm):
             let cell = collectionView.dequeue(ButtonCell.self, indexPath: indexPath)
             cell.configure(viewModel: vm)
@@ -74,7 +69,6 @@ final class LaunchDetailsViewController: UIViewController {
         collectionView.registerNib(ImagesCarouselCell.self)
         collectionView.registerNib(LaunchDetailsCell.self)
         collectionView.registerNib(LoadingCell.self)
-        collectionView.registerNib(RocketDetailsCell.self)
         collectionView.registerNib(TextCell.self)
         collectionView.registerNib(ButtonCell.self)
 
@@ -127,9 +121,6 @@ extension LaunchDetailsViewController: UICollectionViewDelegateFlowLayout {
 
         case .loading:
             return CGSize(width: width, height: 100)
-
-        case .rocket(let rocket):
-            return CGSize(width: width, height: 400)
 
         case .button:
             return CGSize(width: width, height: 66)
